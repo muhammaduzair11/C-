@@ -28,7 +28,7 @@ class Clock {
 
 int main()
 {
-    Clock c1(12, 45, 30), c2(12, 45, 30);
+    Clock c1(12, 45, 20), c2(12, 45, 20);
     c1.showTime();
     c2.showTime();
     c1.equalTime(c2);
