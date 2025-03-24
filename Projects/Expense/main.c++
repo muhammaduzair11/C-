@@ -11,10 +11,8 @@ private:
   string password;
 
 public:
-
   // Public varibles
-  string category[7][2] = {{"Food"},{"Rent"}, {"Utilities"}, {"Healthcare"}, {"Entertainment"}, {"Education"}, {"Other"}};
-
+  string category[7][2] = {{"Food"}, {"Rent"}, {"Utilities"}, {"Healthcare"}, {"Entertainment"}, {"Education"}, {"Other"}};
 
   // Setters Decleration
   void setSalary(int sal);
@@ -98,7 +96,7 @@ int main()
       else if (choice == 2)
       {
 
-        cout << "\t\t\t Enter your savings goal for this month\n \t\t\t Current Saving Goal :"<< user_savings[user_no]  <<"\n\t\t\t Amount : ";
+        cout << "\t\t\t Enter your savings goal for this month\n \t\t\t Current Saving Goal :" << user_savings[user_no] << "\n\t\t\t Amount : ";
         cin >> user_savings[user_no];
         user[user_no].setSaving(user_savings[user_no]);
         while (user_savings[user_no] > user_budget[user_no])
@@ -108,14 +106,28 @@ int main()
           user[user_no].setSaving(user_savings[user_no]);
           cout << "\n\n\n";
         }
-      } else if(choice == 3) {
+      }
+      else if (choice == 3)
+      {
         cout << "\t\t\t Set budget limit for different Categories\n \t\t\t 1). Food \n \t\t\t 2). Rent \n \t\t\t 3). Utilities \n \t\t\t 4). Health care \n \t\t\t 5). Entertainment  \n \t\t\t 6). Education \n \t\t\t 7). Other\n";
 
-        for (int i = 0; i < 7; i++){
-          cout << "\t\t\t Enter budget for " << user[user_no].category[i][0] << ": ";
-          cin >> user[user_no].category[i][1];
-        }
+        int budget_remaing = user_budget[user_no];
+        bool budget_limit = true;
 
+          for (int i = 0; i < 7; i++)
+          {
+            cout << "\t\t\t (Budget Remaining : " << budget_remaing << "   " << "Savings Goal : " << user_savings[user_no] << endl;
+            cout << "\t\t\t Enter budget for " << user[user_no].category[i][0] << ": ";
+            cin >> user[user_no].category[i][1];
+            budget_remaing -= stoi(user[user_no].category[i][1]);
+
+            if (budget_remaing < 0)
+            {
+              cout << "\n\t\t\t Kindly increase your budget or lower your spendings\n";
+              break;
+            }
+            
+          }
       }
     }
   }
