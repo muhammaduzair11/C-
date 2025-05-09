@@ -25,7 +25,7 @@ class Student {
 int main()
 {
     Student s1;
-    Student s2("Uzair");
+    Student s2("Uzair",);
     Student s3("Uzair", 39);
     Student s4("Uzair", 39, 27);
 
